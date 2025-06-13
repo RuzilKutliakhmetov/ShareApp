@@ -1,3 +1,4 @@
+import GlobalProvider from '@/providers/GlobalProvider'
 import { Stack } from 'expo-router'
 import {
 	MD3LightTheme as DefaultTheme,
@@ -17,7 +18,12 @@ const theme = {
 export default function RootLayout() {
 	return (
 		<PaperProvider theme={theme}>
-			<Stack />
+			<GlobalProvider>
+				<Stack screenOptions={{ headerShown: false }}>
+					<Stack.Screen name='index' />
+					<Stack.Screen name='(tabs)' />
+				</Stack>
+			</GlobalProvider>
 		</PaperProvider>
 	)
 }
